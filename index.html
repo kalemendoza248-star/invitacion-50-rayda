@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Invitación - 50 años de Rayda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bloqueo-scroll">
+
+  <!-- PANTALLA INICIAL -->
+  <section id="pantalla-inicial" class="pantalla-inicial">
+
+    <div id="destellos" class="destellos"></div>
+
+    <div class="contenido-inicial">
+
+      <p class="inicial-pequeno">
+        Tienes una invitación 
+      </p>
+
+      <div class="inicial-linea"></div>
+
+      <p class="inicial-texto">
+        Celebremos juntos
+        ESTA FECHA TAN ESPECIAL
+      </p>
+
+
+      <button
+        id="abrir-invitacion"
+        class="boton-abrir"
+        type="button"
+      >
+        Abrir invitación
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- INVITACIÓN PRINCIPAL -->
+  <main class="invitacion">
+
+  <!-- PRIMERA IMAGEN -->
+  <<!-- PRIMERA IMAGEN -->
+<section class="pagina portada">
+
+  <img
+    class="fondo-pagina"
+    src="assets/fondo-invitacion.jpeg"
+    alt=""
+  >
+
+  <div class="contenido-portada">
+
+    <p class="frase">
+      HAY MOMENTOS QUE MERECEN SER<br>
+      CELEBRADOS CON QUIENES MÁS QUEREMOS
+    </p>
+
+    <p class="invitacion-texto">
+      QUEREMOS INVITARTE<br>
+      A LOS
+    </p>
+
+    <div class="edad">
+      50
+    </div>
+
+    <p class="años">
+      AÑOS DE
+    </p>
+
+    <h1>
+      Rayda Linares
+    </h1>
+
+    
+
+    <!-- FECHA -->
+    <div class="fecha-evento">
+
+      <div class="fecha-bloque">
+        <span>SEPTIEMBRE</span>
+      </div>
+
+      <div class="fecha-dia">
+        <strong>26</strong>
+      </div>
+
+      <div class="fecha-bloque">
+        <span>10:00 P.M.</span>
+      </div>
+
+    </div>
+
+    <!-- MENSAJE Y UBICACIÓN -->
+    <p class="te-esperamos">
+      ¡TE ESPERAMOS EN:
+    </p>
+
+    <a
+      class="boton boton-ubicacion"
+      href="https://maps.app.goo.gl/11xHsqXRWSEkV3nt9"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      VER UBICACIÓN
+    </a>
+
+  </div>
+
+</section>
+
+
+  <!-- SEGUNDA IMAGEN -->
+  <section class="pagina cuenta-regresiva">
+
+    <img
+      class="fondo-pagina"
+      src="assets/fondo-invitacion2.jpg"
+      alt=""
+    >
+
+    <div class="contenido-seccion">
+
+      <p class="etiqueta">
+        Faltan pocos días para celebrar
+      </p>
+
+      <h2>
+        Cuenta regresiva
+      </h2>
+
+      <div id="contador" class="contador">
+
+        <div class="caja-tiempo">
+          <strong id="dias">00</strong>
+          <span>DÍAS</span>
+        </div>
+
+        <div class="caja-tiempo">
+          <strong id="horas">00</strong>
+          <span>HORAS</span>
+        </div>
+
+        <div class="caja-tiempo">
+          <strong id="minutos">00</strong>
+          <span>MINUTOS</span>
+        </div>
+
+        <div class="caja-tiempo">
+          <strong id="segundos">00</strong>
+          <span>SEGUNDOS</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TERCERA IMAGEN -->
+  <section class="pagina confirmacion">
+
+    <img
+      class="fondo-pagina"
+      src="assets/fondo-invitacion3.jpeg"
+      alt=""
+    >
+
+    <div class="contenido-seccion">
+
+      <p class="etiqueta">
+        Confirma tu asistencia
+      </p>
+
+      <h2>
+        Será un placer contar contigo
+      </h2>
+
+      <p class="texto-confirmacion">
+        Confirma tu asistencia haciendo clic en el siguiente botón.
+      </p>
+
+      <a
+        class="boton boton-whatsapp"
+        href="https://wa.me/51950236332?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20celebraci%C3%B3n."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Confirmar por WhatsApp
+      </a>
+
+      <div class="mensaje-final">
+        <p>
+          Gracias por ser parte de este momento tan especial.
+        </p>
+
+        <span>
+          ¡Te esperamos!
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <audio id="musica" loop preload="auto">
+    <source src="assets/musica.mp3" type="audio/mpeg">
+  </audio>
+
+</main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

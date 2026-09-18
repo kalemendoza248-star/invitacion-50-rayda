@@ -1,0 +1,2184 @@
+:root {
+  --vino: #650f12;
+  --vino-oscuro: #3d080c;
+  --vino-claro: #7d1b25;
+  --crema: #fff8e8;
+  --dorado: #e8bd62;
+  --dorado-claro: #ffe7a2;
+  --verde-whatsapp: #1ca653;
+}
+
+
+/* ================================
+   REGLAS GENERALES
+================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--vino);
+  background: var(--crema);
+  font-family: "Cinzel", serif;
+}
+
+.bloqueo-scroll {
+  overflow: hidden;
+}
+
+.invitacion {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+/* ================================
+   PANTALLA INICIAL
+   Esta parte conserva su fondo actual
+================================ */
+
+.pantalla-inicial {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
+
+  overflow: hidden;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(45, 4, 8, 0.56),
+      rgba(45, 4, 8, 0.72)
+    ),
+    url("assets/fondo.jpeg") center top / cover no-repeat;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s ease;
+}
+
+.pantalla-inicial.oculta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pantalla-inicial::before {
+  content: "";
+
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(232, 189, 98, 0.7);
+
+  pointer-events: none;
+}
+
+.contenido-inicial {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  max-width: 600px;
+
+  text-align: center;
+}
+
+.inicial-pequeno {
+  color: var(--dorado-claro);
+
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.inicial-linea {
+  width: 105px;
+  height: 1px;
+
+  margin: 23px auto;
+
+  background: var(--dorado);
+  box-shadow: 0 0 12px var(--dorado);
+}
+
+.inicial-texto {
+  color: var(--dorado-claro);
+
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.numero-inicial {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 20px;
+  padding-bottom: 30px;
+
+  color: #f6d477;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(7rem, 30vw, 14rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -8px;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 5px #fff6c9,
+    0 0 13px #ffe27d,
+    0 0 27px rgba(255, 205, 76, 0.85),
+    0 4px 10px rgba(0, 0, 0, 0.65);
+
+  animation:
+    entrada-numero
+    1.5s
+    cubic-bezier(0.17, 0.84, 0.35, 1.25)
+    0.2s
+    both;
+}
+
+.años-inicial {
+  margin-top: 30px;
+
+  color: var(--dorado-claro);
+
+  font-size: 0.95rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+
+  animation:
+    aparecer
+    1s
+    ease-out
+    1s
+    both;
+}
+
+.contenido-inicial h1 {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  margin: 18px auto 0;
+
+  color: var(--dorado);
+
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 9vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 8px rgba(255, 225, 145, 0.8),
+    0 0 20px rgba(232, 189, 98, 0.6),
+    0 4px 8px rgba(0, 0, 0, 0.65);
+
+  animation:
+    aparecer-nombre
+    1.2s
+    ease-out
+    1.25s
+    both;
+}
+
+.boton-abrir {
+  margin-top: 28px;
+  padding: 16px 32px;
+
+  border: 1px solid var(--dorado);
+  border-radius: 40px;
+
+  color: var(--vino-oscuro);
+  background: var(--dorado);
+
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(232, 189, 98, 0.6),
+    0 0 35px rgba(232, 189, 98, 0.35);
+
+  animation:
+    aparecer-boton
+    1s
+    ease-out
+    1.7s
+    both;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.boton-abrir:hover {
+  transform: scale(1.06);
+
+  box-shadow:
+    0 0 25px rgba(255, 231, 162, 0.9),
+    0 0 55px rgba(232, 189, 98, 0.5);
+}
+
+.boton-abrir:active {
+  transform: scale(0.97);
+}
+
+
+/* ================================
+   DESTELLOS DE LA PANTALLA INICIAL
+================================ */
+
+.destellos {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.destello {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+  background: #fff8d6;
+
+  opacity: 0;
+
+  box-shadow:
+    0 0 6px #fff8d6,
+    0 0 13px #ffe17a,
+    0 0 21px rgba(255, 211, 91, 0.8);
+
+  animation:
+    brillo-suave
+    var(--duracion)
+    ease-in-out
+    var(--retardo)
+    infinite;
+}
+
+.destello::before,
+.destello::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.destello::before {
+  width: 2px;
+  height: 30px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 248, 214, 0.9),
+    transparent
+  );
+}
+
+.destello::after {
+  width: 30px;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 248, 214, 0.9),
+    transparent
+  );
+}
+
+
+/* ================================
+   PORTADA PRINCIPAL
+   SIN DEGRADADO NI OPACIDAD
+================================ */
+
+.portada,
+.seccion {
+  position: relative;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  /*
+    Las tres imágenes son partes de una misma decoración.
+    Se estiran a la página completa para que no se repitan.
+  */
+  background-size: 100% 100%;
+}
+
+.portada {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px 25px;
+  text-align: center;
+
+  /* Primer fondo floral, sin opacidad */
+  background-image: url("assets/fondo-invitacion.jpg");
+}
+
+.portada::before {
+  content: "";
+
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(101, 15, 18, 0.4);
+
+  pointer-events: none;
+}
+
+.contenido-portada {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 650px;
+
+  color: var(--vino);
+}
+
+.frase {
+  max-width: 450px;
+
+  margin: 0 auto 32px;
+
+  color: var(--vino);
+
+  font-size: clamp(0.8rem, 2vw, 1.05rem);
+  line-height: 1.6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.invitacion-texto {
+  color: var(--vino);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.edad {
+  margin-top: 14px;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(8rem, 27vw, 13rem);
+  font-weight: 400;
+  line-height: 0.75;
+  letter-spacing: -10px;
+
+  text-shadow: none;
+}
+
+.años {
+  margin-top: 22px;
+
+  color: var(--vino);
+
+  font-size: 1.05rem;
+  letter-spacing: 8px;
+}
+
+.contenido-portada h1 {
+  margin-top: 10px;
+
+  color: var(--vino);
+
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.5rem, 11vw, 7rem);
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+
+  text-shadow: none;
+}
+
+.separador {
+  width: 180px;
+  height: 1px;
+
+  margin: 28px auto;
+
+  background: var(--vino);
+}
+
+.datos-fecha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 42px;
+  margin: 20px auto;
+
+  color: var(--vino);
+}
+
+.datos-fecha div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.datos-fecha span {
+  color: var(--vino);
+
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+}
+
+.datos-fecha strong {
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.datos-fecha small {
+  color: var(--vino);
+
+  font-size: 0.78rem;
+  letter-spacing: 4px;
+}
+
+.direccion {
+  margin: 28px auto 18px;
+
+  color: var(--vino);
+
+  font-size: 0.82rem;
+  line-height: 1.8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.te-esperamos {
+  margin: 20px auto 24px;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+
+/* ================================
+   BOTONES
+================================ */
+
+.boton {
+  display: inline-block;
+
+  padding: 14px 24px;
+
+  border-radius: 30px;
+
+  text-decoration: none;
+
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.boton:hover {
+  transform: translateY(-3px);
+}
+
+.boton-ubicacion {
+  color: var(--crema);
+  background: var(--vino);
+
+  box-shadow: 0 5px 20px rgba(101, 15, 18, 0.35);
+}
+
+.boton-whatsapp {
+  color: white;
+  background: var(--verde-whatsapp);
+
+  box-shadow: 0 5px 18px rgba(28, 166, 83, 0.25);
+}
+
+
+/* ================================
+   SEGUNDO Y TERCER FONDO
+================================ */
+
+.seccion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 80px 25px;
+
+  text-align: center;
+}
+
+.fondo-2 {
+  background-image: url("assets/fondo-invitacion-2.jpg");
+}
+
+.fondo-3 {
+  background-image: url("assets/fondo-invitacion-3.jpg");
+}
+
+.contenido-seccion {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 650px;
+
+  color: var(--vino);
+}
+
+.etiqueta {
+  margin-bottom: 20px;
+
+  color: var(--vino);
+
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.contenido-seccion h2 {
+  margin-bottom: 28px;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  font-weight: 600;
+}
+
+
+/* ================================
+   CUENTA REGRESIVA
+================================ */
+
+.contador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 14px;
+}
+
+.caja-tiempo {
+  min-width: 105px;
+  padding: 20px 12px;
+
+  border: 1px solid var(--vino);
+  background: var(--crema);
+}
+
+.caja-tiempo strong {
+  display: block;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.caja-tiempo span {
+  display: block;
+
+  margin-top: 9px;
+
+  color: var(--vino);
+
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+}
+
+
+/* ================================
+   CONFIRMACIÓN
+================================ */
+
+.texto-confirmacion {
+  max-width: 480px;
+
+  margin: 0 auto 28px;
+
+  color: var(--vino);
+
+  line-height: 1.7;
+}
+
+.mensaje-final {
+  margin-top: 70px;
+  padding: 0;
+
+  color: var(--vino);
+}
+
+.mensaje-final p {
+  color: var(--vino);
+
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.mensaje-final span {
+  display: block;
+
+  margin-top: 15px;
+
+  color: var(--vino);
+
+  font-family: "Great Vibes", cursive;
+  font-size: 3.8rem;
+}
+
+
+/* ================================
+   AUDIO
+================================ */
+
+audio {
+  display: none;
+}
+
+
+/* ================================
+   ANIMACIONES
+================================ */
+
+@keyframes entrada-numero {
+  0% {
+    opacity: 0;
+    transform:
+      translateX(-160px)
+      scale(0.35)
+      rotate(-18deg);
+  }
+
+  55% {
+    opacity: 1;
+    transform:
+      translateX(15px)
+      scale(1.08)
+      rotate(3deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateX(0)
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecer-nombre {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.85);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aparecer-boton {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brillo-suave {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+
+  35% {
+    opacity: 0.45;
+    transform: scale(0.75) rotate(45deg);
+  }
+
+  55% {
+    opacity: 0.75;
+    transform: scale(0.9) rotate(90deg);
+  }
+
+  75% {
+    opacity: 0.35;
+    transform: scale(0.65) rotate(135deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(180deg);
+  }
+}
+
+
+/* =================================
+   CORRECCIÓN DE PÁGINAS CONTINUAS
+================================= */
+
+.pagina {
+  position: relative;
+
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0 !important;
+
+  overflow: hidden;
+
+  background: none !important;
+  line-height: normal;
+}
+
+.fondo-pagina {
+  display: block;
+
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+}
+
+.pagina .contenido-portada,
+.pagina .contenido-seccion {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: none;
+  padding: 30px 20px;
+
+  text-align: center;
+}
+
+
+/* =================================
+   COLORES DEL TEXTO
+================================= */
+
+.pagina .frase,
+.pagina .invitacion-texto,
+.pagina .edad,
+.pagina .años,
+.pagina h1,
+.pagina .direccion,
+.pagina .te-esperamos,
+.pagina .etiqueta,
+.pagina h2,
+.pagina p {
+  color: var(--vino);
+}
+
+.pagina .edad,
+.pagina h1 {
+  text-shadow: none;
+}
+
+.pagina .separador {
+  background: var(--vino);
+  box-shadow: none;
+}
+
+
+/* =================================
+   FECHA DE LA CELEBRACIÓN
+================================= */
+
+.fecha-evento {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 28px;
+  margin: 20px auto;
+
+  color: var(--vino);
+}
+
+.fecha-dia,
+.fecha-hora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 135px;
+  padding: 9px 14px;
+
+  border-top: 1px solid var(--vino);
+  border-bottom: 1px solid var(--vino);
+}
+
+.fecha-dia span,
+.fecha-hora span {
+  color: var(--vino);
+
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.fecha-dia strong {
+  margin-top: 6px;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.fecha-hora small {
+  margin-top: 8px;
+
+  color: var(--vino);
+
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+}
+
+
+/* =================================
+   BOTÓN DE UBICACIÓN
+================================= */
+
+.boton-ubicacion {
+  color: var(--crema);
+  background: var(--vino);
+
+  box-shadow: 0 5px 18px rgba(101, 15, 18, 0.3);
+}
+
+
+/* =================================
+   CUENTA REGRESIVA
+================================= */
+
+.contador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.caja-tiempo {
+  min-width: 80px;
+  padding: 15px 9px;
+
+  border: 1px solid var(--vino);
+  background: var(--crema);
+}
+
+.caja-tiempo strong {
+  display: block;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.caja-tiempo span {
+  display: block;
+
+  margin-top: 7px;
+
+  color: var(--vino);
+
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+}
+
+
+/* =================================
+   CONFIRMACIÓN Y MENSAJE FINAL
+================================= */
+
+.texto-confirmacion {
+  max-width: 450px;
+  margin: 0 auto 25px;
+
+  color: var(--vino);
+  line-height: 1.7;
+}
+
+.boton-whatsapp {
+  color: #ffffff;
+  background: var(--verde-whatsapp);
+}
+
+.mensaje-final {
+  margin-top: 55px;
+  padding: 0;
+
+  color: var(--vino);
+  background: transparent;
+}
+
+.mensaje-final p {
+  color: var(--vino);
+  line-height: 1.7;
+}
+
+.mensaje-final span {
+  display: block;
+
+  margin-top: 14px;
+
+  color: var(--vino);
+
+  font-family: "Great Vibes", cursive;
+  font-size: 3.5rem;
+}
+
+
+/* =================================
+   CELULARES
+================================= */
+
+@media (max-width: 600px) {
+
+  .pantalla-inicial {
+    padding: 20px;
+  }
+
+  .pantalla-inicial::before {
+    inset: 10px;
+  }
+
+  .inicial-pequeno {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+  }
+
+  .inicial-texto {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .numero-inicial {
+    margin-top: 18px;
+    padding-bottom: 17px;
+
+    font-size: clamp(7rem, 31vw, 10rem);
+    letter-spacing: -5px;
+  }
+
+  .años-inicial {
+    margin-top: 15px;
+
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+  }
+
+  .contenido-inicial h1 {
+    margin-top: 17px;
+
+    font-size: clamp(1.8rem, 8.5vw, 3rem);
+  }
+
+  .boton-abrir {
+    padding: 14px 22px;
+    font-size: 0.7rem;
+  }
+
+  /* Las páginas nuevas no deben tener padding */
+  .pagina {
+    padding: 0 !important;
+  }
+
+  .pagina .contenido-portada,
+  .pagina .contenido-seccion {
+    padding: 22px 12px;
+  }
+
+  .portada .frase {
+    margin-bottom: 20px;
+
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  .portada .invitacion-texto {
+    font-size: 0.64rem;
+    letter-spacing: 2.5px;
+  }
+
+  .portada .edad {
+    margin-top: 12px;
+
+    font-size: clamp(7rem, 29vw, 10rem);
+    letter-spacing: -6px;
+  }
+
+  .portada .años {
+    margin-top: 17px;
+
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+  }
+
+  .portada .contenido-portada h1 {
+    font-size: clamp(2.8rem, 13vw, 5rem);
+  }
+
+  .fecha-evento {
+    gap: 8px;
+  }
+
+  .fecha-dia,
+  .fecha-hora {
+    min-width: 115px;
+    padding: 8px 7px;
+  }
+
+  .fecha-dia span,
+  .fecha-hora span {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+  }
+
+  .fecha-dia strong {
+    font-size: 3.2rem;
+  }
+
+  .fecha-hora small {
+    font-size: 0.56rem;
+    letter-spacing: 2px;
+  }
+
+  .portada .direccion {
+    font-size: 0.6rem;
+    letter-spacing: 0.8px;
+    line-height: 1.7;
+  }
+
+  .portada .te-esperamos {
+    font-size: 0.95rem;
+  }
+
+  .contador {
+    gap: 6px;
+  }
+
+  .caja-tiempo {
+    min-width: 70px;
+    padding: 12px 6px;
+  }
+
+  .caja-tiempo strong {
+    font-size: 1.7rem;
+  }
+
+  .caja-tiempo span {
+    font-size: 0.48rem;
+  }
+
+  .mensaje-final {
+    margin-top: 50px;
+  }
+
+  .mensaje-final span {
+    font-size: 3rem;
+  }
+}
+
+
+/* =================================
+   REDUCIR ANIMACIONES
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =================================
+   FECHA SIN DEFORMACIÓN
+================================= */
+
+.fecha-evento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+
+  width: min(100%, 330px);
+  margin: 28px auto 24px;
+
+  color: #650f12;
+}
+
+.fecha-dia,
+.fecha-hora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0;
+  min-height: 82px;
+  padding: 10px 8px;
+
+  border-top: 1px solid #650f12;
+  border-bottom: 1px solid #650f12;
+
+  text-align: center;
+}
+
+.fecha-dia span,
+.fecha-hora span {
+  display: block;
+
+  color: #650f12;
+
+  font-family: "Cinzel", serif;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.fecha-dia strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #650f12;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.fecha-hora small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #650f12;
+
+  font-family: "Cinzel", serif;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+
+/* Más espacio entre 50 y AÑOS DE */
+
+.portada .edad {
+  margin-bottom: 18px;
+}
+
+.portada .años {
+  margin-top: 0;
+}
+
+
+/* En celulares */
+
+@media (max-width: 600px) {
+
+  .fecha-evento {
+    width: min(100%, 290px);
+    margin-top: 24px;
+  }
+
+  .fecha-dia,
+  .fecha-hora {
+    min-height: 75px;
+    padding: 8px 4px;
+  }
+
+  .fecha-dia span,
+  .fecha-hora span {
+    font-size: 0.57rem;
+    letter-spacing: 1.5px;
+  }
+
+  .fecha-dia strong {
+    font-size: 3.2rem;
+  }
+
+  .fecha-hora small {
+    font-size: 0.52rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* =================================
+   AJUSTE FINAL DE LA PORTADA
+================================= */
+
+.portada .contenido-portada {
+  justify-content: flex-start;
+  padding-top: 20%;
+}
+
+/* Frase superior */
+.portada .frase {
+  margin-bottom: 30px;
+}
+
+/* Texto "QUEREMOS INVITARTE A LOS" */
+.portada .invitacion-texto {
+  margin-bottom: 12px;
+}
+
+/* Número 50 */
+.portada .edad {
+  margin: 0;
+  font-size: clamp(7rem, 18vw, 11rem);
+  line-height: 0.9;
+  letter-spacing: -7px;
+}
+
+/* AÑOS DE */
+.portada .años {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+/* Nombre */
+.portada .contenido-portada h1 {
+  margin-top: 0;
+  font-size: clamp(3.2rem, 8vw, 6rem);
+}
+
+/* Línea */
+.portada .separador {
+  margin: 22px auto;
+}
+
+/* Fecha */
+.portada .fecha-evento {
+  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+
+  .portada .contenido-portada {
+    justify-content: flex-start;
+    padding-top: 16%;
+  }
+
+  .portada .frase {
+    margin-bottom: 22px;
+  }
+
+  .portada .invitacion-texto {
+    margin-bottom: 8px;
+  }
+
+  .portada .edad {
+    margin: 0;
+    font-size: clamp(6.5rem, 25vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -5px;
+  }
+
+  .portada .años {
+    margin-top: 14px;
+    margin-bottom: 5px;
+  }
+
+  .portada .contenido-portada h1 {
+    margin-top: 0;
+    font-size: clamp(2.7rem, 12vw, 4.8rem);
+  }
+
+  .portada .separador {
+    margin: 18px auto;
+  }
+
+  .portada .fecha-evento {
+    margin-top: 12px;
+    margin-bottom: 15px;
+  }
+}
+/* =========================================
+   PORTADA - DISEÑO FINAL
+========================================= */
+
+.portada .contenido-portada {
+  justify-content: flex-start;
+  padding-top: 19%;
+}
+
+/* Frase superior */
+.portada .frase {
+  margin: 0 auto 38px;
+  color: var(--vino);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1rem, 2.3vw, 1.35rem);
+  line-height: 1.35;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* QUEREMOS INVITARTE / A LOS */
+.portada .invitacion-texto {
+  margin: 0 auto 12px;
+  color: var(--vino);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* 50 */
+.portada .edad {
+  margin: 0;
+  color: var(--vino);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(8rem, 18vw, 12rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -8px;
+}
+
+/* AÑOS DE */
+.portada .años {
+  margin: 18px auto 4px;
+  color: var(--vino);
+  font-size: 1.05rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+/* Rayda Linares */
+.portada .contenido-portada h1 {
+  margin: 0;
+  color: var(--vino);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Línea debajo del nombre */
+.portada .separador {
+  width: 190px;
+  height: 1px;
+  margin: 25px auto 20px;
+  background: var(--vino);
+}
+
+/* =========================================
+   FECHA: SEPTIEMBRE | 26 | 10:00 P.M.
+========================================= */
+
+.portada .fecha-evento {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  width: min(100%, 530px);
+  margin: 0 auto;
+
+  color: var(--vino);
+}
+
+/* SEPTIEMBRE y HORA */
+.portada .fecha-bloque {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 58px;
+
+  border-top: 1px solid var(--vino);
+  border-bottom: 1px solid var(--vino);
+}
+
+.portada .fecha-bloque span {
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* 26 */
+.portada .fecha-dia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 125px;
+}
+
+.portada .fecha-dia strong {
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+/* =========================================
+   TE ESPERAMOS
+========================================= */
+
+.portada .te-esperamos {
+  margin: 38px auto 20px;
+
+  color: var(--vino);
+
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   BOTÓN UBICACIÓN
+========================================= */
+
+.portada .boton-ubicacion {
+  display: inline-block;
+
+  padding: 14px 28px;
+
+  border-radius: 30px;
+
+  color: var(--crema);
+  background: var(--vino);
+
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+
+  box-shadow:
+    0 5px 18px rgba(101, 15, 18, 0.30);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.portada .boton-ubicacion:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 25px rgba(101, 15, 18, 0.40);
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+  .portada .contenido-portada {
+    justify-content: flex-start;
+    padding-top: 15%;
+  }
+
+  .portada .frase {
+    margin-bottom: 25px;
+
+    font-size: 0.68rem;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+  }
+
+  .portada .invitacion-texto {
+    margin-bottom: 8px;
+
+    font-size: 0.65rem;
+    line-height: 1.7;
+    letter-spacing: 2.5px;
+  }
+
+  .portada .edad {
+    font-size: clamp(7rem, 28vw, 9rem);
+    line-height: 0.85;
+    letter-spacing: -5px;
+  }
+
+  .portada .años {
+    margin-top: 15px;
+    margin-bottom: 2px;
+
+    font-size: 0.72rem;
+    letter-spacing: 5px;
+  }
+
+  .portada .contenido-portada h1 {
+    font-size: clamp(3rem, 13vw, 5rem);
+  }
+
+  .portada .separador {
+    width: 150px;
+    margin: 20px auto 17px;
+  }
+
+  .portada .fecha-evento {
+    width: min(100%, 340px);
+  }
+
+  .portada .fecha-bloque {
+    min-height: 48px;
+  }
+
+  .portada .fecha-bloque span {
+    font-size: 0.68rem;
+    letter-spacing: 0.5px;
+  }
+
+  .portada .fecha-dia {
+    min-width: 80px;
+  }
+
+  .portada .fecha-dia strong {
+    font-size: 3.5rem;
+  }
+
+  .portada .te-esperamos {
+    margin-top: 28px;
+    margin-bottom: 15px;
+
+    font-size: 0.58rem;
+    letter-spacing: 3px;
+  }
+
+  .portada .boton-ubicacion {
+    padding: 12px 22px;
+    font-size: 0.65rem;
+  }
+}
+
+/* =========================================
+   AJUSTE FINAL - PORTADA
+========================================= */
+
+/* ---------- 50 Y AÑOS DE ---------- */
+
+.portada .edad {
+  margin: 0 0 38px 0 !important;
+
+  font-size: clamp(14rem, 24vw, 18rem);
+  line-height: 0.9;
+  letter-spacing: -8px;
+}
+
+.portada .años {
+  margin: 0 0 20px 0 !important;
+
+  line-height: 1.9;
+}
+
+
+/* ---------- FECHA ---------- */
+
+.portada .fecha-evento {
+  display: grid;
+
+  grid-template-columns: 1fr 125px 1fr;
+
+  align-items: stretch;
+
+  width: min(100%, 530px);
+
+  margin: 25px auto 0;
+
+  gap: 0;
+}
+
+
+/* Los tres bloques deben tener exactamente
+   la misma altura y las líneas alineadas */
+
+.portada .fecha-bloque,
+.portada .fecha-dia {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 58px;
+
+  padding: 8px;
+
+  border-top: 1px solid var(--vino);
+  border-bottom: 1px solid var(--vino);
+
+  box-sizing: border-box;
+}
+
+
+/* Quitamos las reglas antiguas que
+   estaban provocando el descuadre */
+
+.portada .fecha-dia {
+  min-width: 125px;
+
+  border-left: none;
+  border-right: none;
+}
+
+
+/* Texto SEPTIEMBRE y HORA */
+
+.portada .fecha-bloque span {
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 3rem;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+}
+
+
+/* Número 26 */
+
+.portada .fecha-dia strong {
+  display: block;
+
+  margin: 0;
+
+  color: var(--vino);
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 4.8rem;
+
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+
+/* ---------- TE ESPERAMOS ---------- */
+
+.portada .te-esperamos {
+  margin: 100px auto 60px !important;
+
+  color: var(--vino);
+
+  font-family: "Cinzel", serif;
+
+  font-size: 0.85rem;
+
+  letter-spacing: 10px;
+
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+
+/* ---------- BOTÓN ---------- */
+
+.portada .boton-ubicacion {
+  margin-top: 0;
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+  .portada .edad {
+    margin-bottom: 25px !important;
+
+    font-size: clamp(7rem, 28vw, 9rem);
+    line-height: 0.9;
+  }
+
+  .portada .años {
+    margin-bottom: 4px !important;
+
+    font-size: 0.72rem;
+    letter-spacing: 5px;
+  }
+
+  .portada .fecha-evento {
+    grid-template-columns: 1fr 80px 1fr;
+
+    width: min(100%, 340px);
+
+    margin-top: 22px;
+  }
+
+  .portada .fecha-bloque,
+  .portada .fecha-dia {
+    min-height: 48px;
+
+    padding: 6px 4px;
+  }
+
+  .portada .fecha-dia {
+    min-width: 80px;
+  }
+
+  .portada .fecha-bloque span {
+    font-size: 0.68rem;
+
+    letter-spacing: 0.5px;
+  }
+
+  .portada .fecha-dia strong {
+    font-size: 3.5rem;
+  }
+
+  .portada .te-esperamos {
+    margin-top: 28px !important;
+    margin-bottom: 15px !important;
+
+    font-size: 0.58rem;
+    letter-spacing: 3px;
+  }
+
+}
+
+/* =====================================================
+   AJUSTE FINAL PARA CELULAR
+===================================================== */
+
+@media screen and (max-width: 600px) {
+
+  html,
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .invitacion {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Cada página ocupa exactamente la pantalla */
+  .pagina {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Fondo */
+  .pagina .fondo-pagina {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center center;
+  }
+
+
+  /* =================================================
+     PORTADA
+  ================================================= */
+
+  .portada .contenido-portada {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding: 12vh 18px 5vh;
+
+    box-sizing: border-box;
+
+    text-align: center;
+  }
+
+
+  /* Frase */
+
+  .portada .frase {
+    width: 100%;
+    max-width: 360px;
+
+    margin: 0 auto 28px;
+
+    font-size: 0.68rem;
+
+    line-height: 1.55;
+
+    letter-spacing: 1.4px;
+  }
+
+
+  /* Queremos invitarte */
+
+  .portada .invitacion-texto {
+    width: 100%;
+
+    margin: 0 auto 12px;
+
+    font-size: 0.65rem;
+
+    line-height: 1.8;
+
+    letter-spacing: 3px;
+  }
+
+
+  /* 50 */
+
+  .portada .edad {
+    margin: 0;
+
+    font-size: 9.5rem;
+
+    line-height: 0.72;
+
+    letter-spacing: -6px;
+  }
+
+
+  /* AÑOS DE */
+
+  .portada .años {
+    margin: 27px auto 2px;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 5px;
+  }
+
+
+  /* Nombre */
+
+  .portada .contenido-portada h1 {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 3.7rem;
+
+    line-height: 1.05;
+
+    white-space: nowrap;
+  }
+
+
+  /* QUITAR COMPLETAMENTE EL SEPARADOR */
+
+  .portada .separador {
+    display: none !important;
+  }
+
+
+  /* =================================================
+     FECHA
+  ================================================= */
+
+  .portada .fecha-evento {
+    display: grid;
+
+    grid-template-columns: 1fr 80px 1fr;
+
+    align-items: center;
+
+    width: 100%;
+    max-width: 370px;
+
+    margin: 28px auto 0;
+
+    padding: 0;
+
+    gap: 0;
+
+    border: none !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* IMPORTANTE:
+     quitar cualquier línea heredada */
+
+  .portada .fecha-evento *,
+  .portada .fecha-bloque,
+  .portada .fecha-dia {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+  }
+
+
+  .portada .fecha-bloque {
+    min-height: auto;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+  }
+
+
+  .portada .fecha-bloque span {
+    font-size: 0.68rem;
+
+    letter-spacing: 0.8px;
+
+    white-space: nowrap;
+  }
+
+
+  .portada .fecha-dia {
+    min-height: auto;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+  }
+
+
+  .portada .fecha-dia strong {
+    margin: 0;
+
+    font-size: 4.2rem;
+
+    line-height: 0.85;
+
+    font-weight: 400;
+  }
+
+
+  /* =================================================
+     TE ESPERAMOS
+  ================================================= */
+
+  .portada .te-esperamos {
+    margin: 42px auto 20px !important;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 3.5px;
+
+    text-align: center;
+  }
+
+
+  /* =================================================
+     BOTÓN UBICACIÓN
+  ================================================= */
+
+  .portada .boton-ubicacion {
+    margin: 0 auto;
+
+    padding: 14px 28px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 1.8px;
+
+    border-radius: 30px;
+  }
+
+
+  /* =================================================
+     SEGUNDA PÁGINA
+  ================================================= */
+
+  .cuenta-regresiva .contenido-seccion,
+  .confirmacion .contenido-seccion {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 18px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+  }
+
+
+  .cuenta-regresiva .contador {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+  }
+
+
+  .cuenta-regresiva .caja-tiempo {
+    width: 70px;
+    height: 75px;
+
+    flex-shrink: 0;
+  }
+
+
+  .cuenta-regresiva .caja-tiempo strong {
+    font-size: 2rem;
+  }
+
+
+  /* =================================================
+     TERCERA PÁGINA
+  ================================================= */
+
+  .confirmacion .contenido-confirmacion {
+    padding: 30px 20px;
+  }
+
+}
